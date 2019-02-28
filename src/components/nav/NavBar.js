@@ -15,15 +15,15 @@ class NavBar extends Component {
 
             const resultState = {}
 
-            fetch("http://localhost:5002/employees")
+            fetch(`http://localhost:5002/employees?name_like=${searchText}`)
                 .then(r => r.json())
-                .then(employees => resultState.searchedEmployees = employees.filter(employee => employee.name.includes(searchText)))
-                .then(() => fetch("http://localhost:5002/locations")
+                .then(employees => resultState.searchedEmployees = employees)
+                .then(() => fetch(`http://localhost:5002/locations?name_like=${searchText}`)
                     .then(r => r.json()))
-                .then(locations => resultState.searchedLocations = locations.filter(location => location.name.includes(searchText) || location.address.includes(searchText)))
-                .then(() => fetch("http://localhost:5002/animals")
+                .then(locations => resultState.searchedLocations = locations)
+                .then(() => fetch(`http://localhost:5002/animals?name_like=${searchText}`)
                     .then(r => r.json()))
-                .then(animals => resultState.searchedAnimals = animals.filter(animal => animal.name.includes("searchText")))
+                .then(animals => resultState.searchedAnimals = animals)
                 .then(() => {
                     this.props.history.push({
                         pathname: '/search',
