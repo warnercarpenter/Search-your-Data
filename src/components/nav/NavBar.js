@@ -30,7 +30,6 @@ class NavBar extends Component {
                         resultState
                       })
                 })
-
         }
     }
 

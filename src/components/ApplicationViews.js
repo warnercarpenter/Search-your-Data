@@ -12,10 +12,7 @@ class ApplicationViews extends Component {
     state = {
         employees: [],
         locations: [],
-        animals: [],
-        searchedEmployees: [],
-        searchedLocations: [],
-        searchedAnimals: []
+        animals: []
     }
 
     componentDidMount() {
@@ -46,7 +43,7 @@ class ApplicationViews extends Component {
                     return <EmployeeList employees={this.state.employees} />
                 }} />
                 <Route exact path="/search" render={(props) => {
-                    return <SearchResults searchedEmployees={this.state.searchedEmployees} searchedLocations={this.state.searchedLocations} searchedAnimals={this.state.searchedAnimals} />
+                    return <SearchResults />
                 }} />
             </React.Fragment>
         )
